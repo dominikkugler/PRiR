@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraper</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Web Scraper</h1>
+    <form action="/scrape" method="post">
+        <label for="priceMin">Minimalna cena za metr:</label>
+        <input type="number" id="priceMin" name="priceMin" required>
+        <br>
+        <label for="priceMax">Maksymalna cena za metr:</label>
+        <input type="number" id="priceMax" name="priceMax" required>
+        <br>
+        <label for="count">Ilosc wyszukiwan:</label>
+        <input type="number" id="count" name="count">
+        <button type="submit">Rozpocznij scrapowanie</button>
+    </form>
+    <button onclick="window.location.href='history'">Przejdz do historii wyników</button>
+</body>
+</html>

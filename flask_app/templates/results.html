@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #counter {
+            text-align: center;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Scraped Offers</h1>
+    <button onclick="window.location.href='/'">Back to Home</button>
+    <div id="counter">Number of rows: 0</div>
+    <table id="scrapedTable">
+        <thead>
+            <tr>
+                <th>URL</th>
+                <th>Cena</th>
+                <th>Cena za metr kwadratowy</th>
+                <th>Powierzchnia</th>
+                <th>Ilosc pokoi</th>
+                <th>Piętro</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for scraped in data %}
+            <tr>
+                <td><a href="{{ scraped['url'] }}" target="_blank">{{ scraped['url'] }}</a></td>
+                <td>{{ scraped['price'] }}</td>
+                <td>{{ scraped['price_per_meter'] }}</td>
+                <td>{{ scraped['area'] }}</td>
+                <td>{{ scraped['rooms'] }}</td>
+                <td>{{ scraped['floor'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        // Function to count the number of rows in the table body
+        function updateRowCount() {
+            const table = document.getElementById('scrapedTable');
+            const rowCount = table.tBodies[0].rows.length;
+            const counterDiv = document.getElementById('counter');
+            counterDiv.innerText = `Number of rows: ${rowCount}`;
+        }
+
+        // Call the function to update the row count when the page loads
+        document.addEventListener('DOMContentLoaded', updateRowCount);
+    </script>
+</body>
+</html>
