@@ -33,15 +33,54 @@
         p {
             text-align: center;
         }
+        
+        /* Advanced CSS */
+        
+        /* Styling the table header */
+        thead {
+            background-color: #f2f2f2;
+        }
+        
+        /* Styling the table rows */
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        /* Styling the "Back to Home" button */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        
+        /* Styling the "Wyszukaj coś!" button */
+        button.secondary {
+            background-color: #008CBA;
+        }
+        
+        /* Centering the buttons */
+        .button-container {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <h1>Search History</h1>
-    <button onclick="window.location.href='/'">Back to Home</button>
+    <div class="button-container">
+        <button onclick="window.location.href='/'">Back to Home</button>
+    </div>
     {% if search_data %}
         <table id="table_history">
             <thead>
                 <tr>
+                    <th>Lp</th>
                     <th>Cena minimalna za metr</th>
                     <th>Cena maksymalna za metr</th>
                     <th>Wyniki</th>
@@ -51,6 +90,7 @@
             <tbody>
                 {% for search in search_data %}
                     <tr>
+                        <td>{{ loop.index }}</td>
                         <td>{{ search['price_min'] }}</td>
                         <td>{{ search['price_max'] }}</td>
                         <td>{{ search['count'] }}</td>
@@ -61,7 +101,9 @@
         </table>
     {% else %}
         <p>No search history available.</p>
-        <button onclick="window.location.href='/'">Wyszukaj coś!</button>
+        <div class="button-container">
+            <button class="secondary" onclick="window.location.href='/'">Wyszukaj coś!</button>
+        </div>
     {% endif %}
 </body>
 </html>

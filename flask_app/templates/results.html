@@ -72,6 +72,7 @@
     <table id="scrapedTable">
         <thead>
             <tr>
+                <th>Lp</th>
                 <th>URL</th>
                 <th>Cena</th>
                 <th>Cena za metr kwadratowy</th>
@@ -83,6 +84,7 @@
         <tbody>
             {% for scraped in data %}
             <tr>
+                <td>{{ loop.index }}</td>
                 <td><a href="{{ scraped['url'] }}" target="_blank">{{ scraped['url'] }}</a></td>
                 <td>{{ scraped['price'] }}</td>
                 <td>{{ scraped['price_per_meter'] }}</td>
