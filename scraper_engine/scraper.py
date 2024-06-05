@@ -42,7 +42,7 @@ def extract_links_from_page(url):
 
 def extract_all_links(base_url, count):
     all_links = []
-    for page_num in range(1, 6):
+    for page_num in range(1, 100):
         if len(all_links) >= int(count) : return all_links[:int(count)]
         page_url = f"{base_url}&page={page_num}"
         links = extract_links_from_page(page_url)
