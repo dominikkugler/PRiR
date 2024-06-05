@@ -97,15 +97,12 @@
     </table>
 
     <script>
-        // Function to count the number of rows in the table body
         function updateRowCount() {
             const table = document.getElementById('scrapedTable');
             const rowCount = table.tBodies[0].rows.length;
             const counterDiv = document.getElementById('counter');
             counterDiv.innerText = `Number of rows: ${rowCount}`;
         }
-
-        // Call the function to update the row count when the page loads
         document.addEventListener('DOMContentLoaded', updateRowCount);
     </script>
 </body>
